@@ -3,7 +3,7 @@
 //! All versions v0.X.X are unofficial, and if Tailscale, Inc. chooses
 //! to create an official client library, the ownership of this crate
 //! will be transferred to them to release and maintain V1+. At this
-//! time, breaking API changes may or may be introduced.
+//! time, breaking API changes may or may not be introduced.
 extern crate ipnetwork;
 extern crate pnet;
 
