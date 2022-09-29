@@ -8,7 +8,6 @@ extern crate ipnetwork;
 extern crate pnet;
 
 use ipnetwork::IpNetwork;
-use pnet::datalink;
 use std::net::IpAddr;
 
 fn maybe_tailscale(s: &str) -> bool {
@@ -23,13 +22,12 @@ fn maybe_tailscale(s: &str) -> bool {
 /// let iface = tailscale::interface().expect("no tailscale interface found");
 /// ```
 pub fn interface() -> Option<IpAddr> {
-    let ifaces = datalink::interfaces();
+    let ifaces = pnet_datalink::interfaces();
     let netmask: IpNetwork = "100.64.0.0/10".parse().unwrap();
     ifaces
         .iter()
         .filter(|iface| maybe_tailscale(&iface.name))
-        .map(|iface| iface.ips.clone())
-        .flatten()
+        .flat_map(|iface| iface.ips.clone())
         .filter(|ipnet| ipnet.is_ipv4() && netmask.contains(ipnet.network()))
         .map(|ipnet| ipnet.ip())
         .next()
