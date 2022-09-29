@@ -3,7 +3,7 @@ name = "tailscale"
 description = "A set of application-level primitives for Tailscale."
 version = "0.1.1"
 authors = ["Morgan Gallant <morgan@xor.dev>"]
-edition = "2018"
+edition = "2021"
 readme = "README.md"
 repository = "https://github.com/xortechnologies/tailscale-rs"
 license = "MIT"
@@ -11,5 +11,6 @@ keywords = ["tailscale", "ipn", "intranet"]
 categories = ["network-programming"]
 
 [dependencies]
-pnet = "0.26.0"
-ipnetwork = "0.16.0"
+pnet = "0.31.0"
+ipnetwork = "0.20.0"
+pnet_datalink = "0.31.0"
